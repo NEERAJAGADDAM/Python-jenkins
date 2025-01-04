@@ -1,13 +1,18 @@
-import unittest
-from src.example import add_numbers, Subtract_numbers
+import sys
+import os
 
-class TestExample(unittest.TestCase):
-    def test_add_numbers(self):
-        self.assertEqual(add_numbers(100,200), 300)
-        
-    def test_subtract_numbers(self):
-        self.assertEqual(Subtract_numbers(300,200), 100)
-        
-if __name__ == "__main__":
-    unittest.main()
-        
+# Add the src directory to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+
+# Import the functions to test
+from example import add_numbers, Subtract_numbers  # Ensure this matches the function names in example.py
+
+
+def test_add_numbers():
+    assert add_numbers(10, 20) == 30
+    assert add_numbers(-1, 1) == 0
+
+
+def test_subtract_numbers():
+    assert Subtract_numbers(5, 3) == 2  # Corrected the function name
+    assert Subtract_numbers(3, 5) == -2  # Corrected the function name
